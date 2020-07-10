@@ -46,6 +46,23 @@ public class TestCalculator {
 		assertEquals(6 , Calculator.add("//_\n1_2_3"));
 	}
 	
+	@Rule
+	public ExpectedException expectedException = ExpectedException.none();
+	
+	
+	@Test 
+	public void testNegativeNumberException() {
+		expectedException.expect(IllegalArgumentException.class);
+		expectedException.expectMessage("Negative number : -5");
+		Calculator.add("-5");
+	}
+	
+	@Test
+	public void testAllNegativeNumbersThrowsException() {
+		expectedException.expect(IllegalArgumentException.class);
+		expectedException.expectMessage("Negative number : -5,-3,-8");
+		Calculator.add("1,2,-5,-3,-8");
+	}
 	
 
 }
