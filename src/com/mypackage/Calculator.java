@@ -36,7 +36,7 @@ public class Calculator {
 			return IntStream.empty();
 		}else {
 			return Stream.of(numbers.split(delimiter))
-				.mapToInt(Integer::parseInt);
+				.mapToInt(Integer::parseInt).map(n -> n % 1000);
 		}
 	}
 	
