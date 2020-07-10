@@ -13,22 +13,31 @@ public class Calculator {
 		this.numbers = numbers;
 	}
 	
+	private int sum() {
+		return Arrays.stream(numbers.split(delimiter))
+				.mapToInt(Integer::parseInt)
+				.sum();
+	}
+	
+	
 	public static int add(String input) {
 		if(input.isEmpty()) 
 			return 0;
 		
-		Calculator cal;
+		return parseInt(input).sum();
+		
+	}
+
+	private static Calculator parseInt(String input) {
+		
 		if(input.startsWith("//")) {
 			String[] parts = input.split("\n",2);
 			input = parts[1];
-			cal = new Calculator(parts[0].substring(2),input);
+			return new Calculator(parts[0].substring(2),input);
 		}else{
-			cal = new Calculator(",|\n", input);
+			return new Calculator(",|\n", input);
 		}
-		
-		Stream<String> numbers = Arrays.stream(cal.numbers.split(cal.delimiter));
-		return numbers.mapToInt(Integer::parseInt).sum();
-		}
+	}
 	
 
 }
