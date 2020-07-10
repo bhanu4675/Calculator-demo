@@ -1,13 +1,17 @@
 package com.mypackage;
 
+import java.util.Arrays;
+import java.util.stream.Stream;
+
 public class Calculator {
 	
 	public static int add(String input) {
-		if(input.isEmpty()) {
+		if(input.isEmpty()) 
 			return 0;
-		}else {
-			return Integer.parseInt(input);
+		
+		Stream<String> numbers = Arrays.stream(input.split(","));
+		return numbers.mapToInt(Integer::parseInt).sum();
 		}
-	}
+	
 
 }
