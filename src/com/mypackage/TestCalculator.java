@@ -26,5 +26,16 @@ public class TestCalculator {
 		assertEquals(6 , Calculator.add("1,2,3"));
 	}
 	
+	@Test
+	public void testSumDelimitedByNewLine() {
+		assertEquals(3 , Calculator.add("1\n2"));
+	}
+	
+	@Test
+	public void testSumDelimitedByCommaAndNewLine() {
+		assertEquals(6 , Calculator.add("1\n2,3"));
+	}
+	
+	
 
 }
