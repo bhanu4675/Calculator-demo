@@ -9,9 +9,10 @@ public class Calculator {
 		if(input.isEmpty()) 
 			return 0;
 		
-		Stream<String> numbers = Arrays.stream(input.split(","));
+		Stream<String> numbers = Arrays.stream(input.split(",|\n"));
 		return numbers.mapToInt(Integer::parseInt).sum();
 		}
 	
 
 }
+
