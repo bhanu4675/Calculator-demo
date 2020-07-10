@@ -36,6 +36,16 @@ public class TestCalculator {
 		assertEquals(6 , Calculator.add("1\n2,3"));
 	}
 	
+	@Test
+	public void testSpecifiedDelimiter() {
+		assertEquals(3 , Calculator.add("//;\n1;2"));
+	}
+	
+	@Test
+	public void testSpecifiedDelimiterByUnderscore() {
+		assertEquals(6 , Calculator.add("//_\n1_2_3"));
+	}
+	
 	
 
 }
