@@ -2,8 +2,12 @@ package com.mypackage;
 
 public class Calculator {
 	
-	public static int add(String text) {
-		return 0;
+	public static int add(String input) {
+		if(input.isEmpty()) {
+			return 0;
+		}else {
+			return Integer.parseInt(input);
+		}
 	}
 
 }
