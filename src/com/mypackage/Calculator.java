@@ -1,6 +1,7 @@
 package com.mypackage;
 
 import java.util.Arrays;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -50,11 +51,23 @@ public class Calculator {
 		
 		if(input.startsWith("//")) {
 			String[] parts = input.split("\n",2);
+			String delimiter = parseDelimiter(parts[0]);
 			input = parts[1];
-			return new Calculator(parts[0].substring(2),parts[1]);
+			return new Calculator(delimiter,parts[1]);
 		}else{
 			return new Calculator(",|\n", input);
 		}
+	}
+
+	private static String parseDelimiter(String string) {
+		// TODO Auto-generated method stub
+		String delimiter = string.substring(2);
+		if(delimiter.startsWith("[")) {
+			delimiter = delimiter.substring(1, delimiter.length() - 1);
+			
+		}
+		return Stream.of(delimiter.split("]\\[")).map(Pattern::quote)
+				.collect(Collectors.joining("|"));
 	}
 	
 
