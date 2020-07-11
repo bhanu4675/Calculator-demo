@@ -2,7 +2,9 @@ package com.mypackage;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class TestCalculator {
 	
@@ -69,6 +71,17 @@ public class TestCalculator {
 		assertEquals(2 ,Calculator.add("1000,2"));
 		
 	}
+	
+	@Test
+	public void testMoreDelimiters() {
+		assertEquals(6 ,Calculator.add("//[***]\n1***2***3"));
+	}
+	
+	@Test
+	public void testMultipleDelimiters() {
+		assertEquals(6 ,Calculator.add("//[*][%]\n1*2%3"));
+	}
+	
 	
 
 }
